@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+            overflow: hidden;
+        }
+        #container {
+            margin-top: 100px;
+            transition: transform 0.3s ease-in-out;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        #yes {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        #no {
+            background-color: #ccc;
+            color: black;
+        }
+        #celebration {
+            display: none;
+            font-size: 30px;
+            color: #ff4d4d;
+        }
+        .funny-message {
+            font-size: 20px;
+            margin-top: 20px;
+            transition: font-size 0.3s ease-in-out;
+        }
+        .bounce {
+            animation: bounce 0.5s infinite alternate;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="bounce">
+        <h1 id="question">Will you be my Valentine? 💖</h1>
+        <button id="yes" onclick="celebrate()">Yes</button>
+        <button id="no" onclick="nextMessage()">No</button>
+        <p id="funnyText" class="funny-message"></p>
+        <img id="funnyGif" src="" alt="funny reaction" style="display:none; width: 200px;">
+    </div>
+    <div id="celebration">
+        <h2>🎉 I knew you couldn't say no to me! 🎉</h2>
+        <p>You are the best! Now let's celebrate! 💕</p>
+        <img src="https://media.giphy.com/media/l4FGs7xF0dLDO6fPO/giphy.gif" alt="celebration">
+        <audio autoplay loop>
+            <source src="https://www.bensound.com/bensound-music/bensound-littleidea.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <script>
+        let messages = [
+            "Are you sure? 😢",
+            "Really really sure? 🥺",
+            "Think again... 😭",
+            "No is not an option! 😡",
+            "Pleaseeee? 😣",
+            "Okay, you're breaking my heart 💔",
+            "What did I do to deserve this? 😭",
+            "I'll give you chocolates 🍫",
+            "Free hugs! 🤗",
+            "Puppy eyes mode activated 🥺",
+            "You're making me sad 😢",
+            "Even the stars want you to say yes 🌟",
+            "Okay, last chance! 😤",
+            "Seriously? 🤨",
+            "Just press YES already! 😤",
+            "Fine... but I won't stop asking! 😈"
+        ];
+        let gifs = [
+            "https://media.giphy.com/media/3o7aCSPqXE5C6T8tBC/giphy.gif",
+            "https://media.giphy.com/media/J5zW4gEnktmZC/giphy.gif",
+            "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
+            "https://media.giphy.com/media/26xBI73gWquCBBCDe/giphy.gif",
+            "https://media.giphy.com/media/3xz2BLBOt13X9AgjEA/giphy.gif"
+        ];
+        let count = 0;
+
+        function nextMessage() {
+            if (count < messages.length) {
+                document.getElementById("funnyText").innerText = messages[count];
+                document.getElementById("funnyText").style.fontSize = (20 + count * 5) + "px";
+                document.getElementById("funnyGif").src = gifs[Math.floor(Math.random() * gifs.length)];
+                document.getElementById("funnyGif").style.display = "block";
+                count++;
+            } else {
+                document.getElementById("funnyText").innerText = "Just press YES already! 😤";
+            }
+        }
+
+        function celebrate() {
+            document.getElementById("container").style.display = "none";
+            document.getElementById("celebration").style.display = "block";
+        }
+    </script>
+</body>
+</html>
